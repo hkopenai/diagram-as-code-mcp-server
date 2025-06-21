@@ -1,0 +1,2 @@
+[console_scripts]
+document_as_code_mcp_server = hkopenai.document_as_code_mcp_server.app:main

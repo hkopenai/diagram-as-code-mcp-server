@@ -1,0 +1,14 @@
+LICENSE
+README.md
+pyproject.toml
+hkopenai.document_as_code_mcp_server.egg-info/PKG-INFO
+hkopenai.document_as_code_mcp_server.egg-info/SOURCES.txt
+hkopenai.document_as_code_mcp_server.egg-info/dependency_links.txt
+hkopenai.document_as_code_mcp_server.egg-info/entry_points.txt
+hkopenai.document_as_code_mcp_server.egg-info/requires.txt
+hkopenai.document_as_code_mcp_server.egg-info/top_level.txt
+hkopenai/document_as_code_mcp_server/__init__.py
+hkopenai/document_as_code_mcp_server/__main__.py
+hkopenai/document_as_code_mcp_server/prompt_get_mermaid_js.py
+hkopenai/document_as_code_mcp_server/server.py
+tests/test_server.py
