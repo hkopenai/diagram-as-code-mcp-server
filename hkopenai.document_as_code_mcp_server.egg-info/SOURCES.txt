@@ -11,4 +11,6 @@ hkopenai/document_as_code_mcp_server/__init__.py
 hkopenai/document_as_code_mcp_server/__main__.py
 hkopenai/document_as_code_mcp_server/prompt_get_mermaid_js.py
 hkopenai/document_as_code_mcp_server/server.py
+hkopenai/document_as_code_mcp_server/tool_fix_mermaid_js.py
 tests/test_server.py
+tests/test_tool_fix_mermaid_js.py
