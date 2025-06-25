@@ -15,19 +15,25 @@ def fix_mermaid_js(code: str | None) -> str:
         return f"No code to review and fix. {get_mermaid_js()}"
     # Pattern to match text between pipe symbols
     pattern = r'\|([^|]*)\|'
-    result = code
-    matches = re.finditer(pattern, code)
-    offset = 0
+    result = ""
+    last_end = 0
     changed = False
-    for match in matches:
+    for match in re.finditer(pattern, code):
+        start, end = match.span()
         description = match.group(1)
+        # Add the part of the string before the match
+        result += code[last_end:start + 1]
         if '(' in description or '[' in description:
             # Suggest quoting the description
-            start, end = match.span()
             suggestion = f'"{description}"'
-            result = result[:start+offset+1] + suggestion + result[end+offset-1:]
-            offset += len(suggestion) - len(description) + 2  # Adjust for added quotes
+            result += suggestion
             changed = True
+        else:
+            result += description
+        result += code[end - 1:end]
+        last_end = end
+    # Add the remaining part of the string after the last match
+    result += code[last_end:]
     if changed:
         return "Fix: " + result
     return "No error detected"
