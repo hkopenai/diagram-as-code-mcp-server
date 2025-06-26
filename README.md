@@ -8,6 +8,7 @@ This is an MCP server that provides custom prompts for guiding bot interactions.
 ## Features
 
 - No Brackets Description: A prompt to instruct bots to avoid using brackets in descriptions.
+- Mermaid.js Support: A tool to assist in authoring, validating, and fixing syntax for Mermaid.js diagrams.
 
 ## Setup
 
