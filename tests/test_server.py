@@ -1,11 +1,11 @@
 import unittest
 from unittest.mock import patch, Mock
-from hkopenai.document_as_code_mcp_server.server import create_mcp_server
+from hkopenai.diagram_as_code_mcp_server.server import create_mcp_server
 
 class TestApp(unittest.TestCase):
-    @patch('hkopenai.document_as_code_mcp_server.server.FastMCP')
-    @patch('hkopenai.document_as_code_mcp_server.server.get_mermaid_js')
-    @patch('hkopenai.document_as_code_mcp_server.server.fix_mermaid_js')
+    @patch('hkopenai.diagram_as_code_mcp_server.server.FastMCP')
+    @patch('hkopenai.diagram_as_code_mcp_server.server.get_mermaid_js')
+    @patch('hkopenai.diagram_as_code_mcp_server.server.fix_mermaid_js')
     def test_create_mcp_server(self, mock_fix_mermaid_js, mock_get_mermaid_js, mock_fastmcp):
         # Setup mocks
         mock_server = Mock()

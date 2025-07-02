@@ -1,5 +1,5 @@
 import unittest
-from hkopenai.document_as_code_mcp_server.tool_fix_mermaid_js import fix_mermaid_js
+from hkopenai.diagram_as_code_mcp_server.tool_fix_mermaid_js import fix_mermaid_js
 
 class TestFixMermaidJs(unittest.TestCase):
     def test_fix_mermaid_js_with_brackets(self):
@@ -21,17 +21,17 @@ class TestFixMermaidJs(unittest.TestCase):
         self.assertEqual(result, expected_output)
 
     def test_fix_mermaid_js_none_input(self):
-        from hkopenai.document_as_code_mcp_server.prompt_get_mermaid_js import get_mermaid_js
+        from hkopenai.diagram_as_code_mcp_server.prompt_get_mermaid_js import get_mermaid_js
         result = fix_mermaid_js(None)
         self.assertEqual(result, f"No code to review and fix. {get_mermaid_js()}")
 
     def test_fix_mermaid_js_empty_input(self):
-        from hkopenai.document_as_code_mcp_server.prompt_get_mermaid_js import get_mermaid_js
+        from hkopenai.diagram_as_code_mcp_server.prompt_get_mermaid_js import get_mermaid_js
         result = fix_mermaid_js("")
         self.assertEqual(result, f"No code to review and fix. {get_mermaid_js()}")
 
     def test_fix_mermaid_js_whitespace_input(self):
-        from hkopenai.document_as_code_mcp_server.prompt_get_mermaid_js import get_mermaid_js
+        from hkopenai.diagram_as_code_mcp_server.prompt_get_mermaid_js import get_mermaid_js
         result = fix_mermaid_js("   \n\t  ")
         self.assertEqual(result, f"No code to review and fix. {get_mermaid_js()}")
 

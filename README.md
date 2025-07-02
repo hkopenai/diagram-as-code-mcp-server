@@ -1,4 +1,4 @@
-# Document as Code MCP Server
+# Diagram as Code MCP Server
 
 [![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-blue.svg)](https://github.com/hkopenai/hk-prompt-mcp-server)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -23,14 +23,14 @@ This MCP server is essential for MCP clients working with Mermaid.js diagrams. L
    ```
 3. Run the server:
    ```bash
-   python -m hkopenai.document_as_code_mcp_server
+python -m hkopenai.diagram_as_code_mcp_server
    ```
 
 ### Running Options
 
-- Default stdio mode: `python -m hkopenai.document_as_code_mcp_server`
-- SSE mode (port 8000): `python -m hkopenai.document_as_code_mcp_server --sse`
-- Serve prompt as tool: `python -m hkopenai.document_as_code_mcp_server --tool`
+- Default stdio mode: `python -m hkopenai.diagram_as_code_mcp_server`
+- SSE mode (port 8000): `python -m hkopenai.diagram_as_code_mcp_server --sse`
+- Serve prompt as tool: `python -m hkopenai.diagram_as_code_mcp_server --tool`
 
 ## Cline Integration
 
@@ -48,7 +48,7 @@ To connect this MCP server to Cline using stdio:
     "command": "python",
     "args": [
       "-m",
-      "hkopenai.document_as_code_mcp_server",
+      "hkopenai.diagram_as_code_mcp_server",
       "--tool"
     ]
   }
