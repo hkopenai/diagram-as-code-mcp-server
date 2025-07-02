@@ -41,5 +41,11 @@ class TestFixMermaidJs(unittest.TestCase):
         result = fix_mermaid_js(input_code)
         self.assertEqual(result, expected_output)
 
+    def test_fix_mermaid_js_node_labels_quoting(self):
+        input_code = "A[AI Agent 1<br/>(e.g., Chatbot)] ---|Collaborate| B[AI Agent 2<br/>(e.g., Flight Booking)]"
+        expected_output = "Fix: A[\"AI Agent 1<br/>(e.g., Chatbot)\"] ---|Collaborate| B[\"AI Agent 2<br/>(e.g., Flight Booking)\"]"
+        result = fix_mermaid_js(input_code)
+        self.assertEqual(result, expected_output)
+
 if __name__ == '__main__':
     unittest.main()
