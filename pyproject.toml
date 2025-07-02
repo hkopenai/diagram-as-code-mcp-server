@@ -5,9 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "hkopenai.document_as_code_mcp_server"
 version = "0.2.0"
-description = "Hong Kong Prompt MCP Server providing custom prompt templates"
-version = "0.1.0"
-description = "Document as Code MCP Server"
+description = "This is a MCP server to provide mermaid js validation tools and prompt for MCP client"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
@@ -18,7 +16,7 @@ name = "Neo Chow"
 email = "neo@01man.com"
 
 [project.urls]
-repository = "https://github.com/hkopenai/document-as-code-mcp-server"
+repository = "https://github.com/hkopenai/hk-prompt-mcp-server.git"
 
 [project.scripts]
 document_as_code_mcp_server = "hkopenai.document_as_code_mcp_server.app:main"
