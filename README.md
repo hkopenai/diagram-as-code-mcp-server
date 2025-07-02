@@ -3,7 +3,11 @@
 [![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-blue.svg)](https://github.com/hkopenai/hk-prompt-mcp-server)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This is an MCP server that provides custom prompts for guiding bot interactions.
+This is a MCP server to provide mermaid js validation tools and prompt for MCP client
+
+## Why Use This MCP Server?
+
+This MCP server is essential for MCP clients working with Mermaid.js diagrams. Large Language Models (LLMs) might be trained with older data and outdated Mermaid.js syntax, and they may not have enough content trained to effectively fix syntax errors. This server addresses these critical limitations by providing specialized tools to assist in authoring, validating, and automatically fixing Mermaid.js syntax, ensuring diagrams are correctly formatted and functional.
 
 ## Features
 
@@ -56,3 +60,4 @@ To connect this MCP server to Cline using stdio:
 Tests are available in `tests`. Run with:
 ```bash
 pytest
+```
