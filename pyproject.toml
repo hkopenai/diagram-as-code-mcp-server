@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "hkopenai.document_as_code_mcp_server"
 version = "0.1.0"
-description = "Hong Kong Prompt MCP Server providing custom prompt templates"
+description = "Document as Code MCP Server"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
@@ -23,7 +23,7 @@ include-package-data = false
 exclude_dirs = ["venv", ".venv", "tests"]
 
 [project.urls]
-repository = "https://github.com/hkopenai/hk-prompt-mcp-server.git"
+repository = "https://github.com/hkopenai/document-as-code-mcp-server"
 
 [project.scripts]
 document_as_code_mcp_server = "hkopenai.document_as_code_mcp_server.app:main"
