@@ -6,7 +6,7 @@ from .prompt_get_mermaid_js import get_mermaid_js
 from .tool_fix_mermaid_js import fix_mermaid_js
 
 def create_mcp_server(use_tool=False):
-    """Create and configure the Document as code MCP server"""
+    """Create and configure the Diagram as code MCP server"""
     mcp = FastMCP(name="DocAsCodeServer")
 
     @mcp.prompt(

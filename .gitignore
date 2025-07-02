@@ -141,4 +141,4 @@ cython_debug/
 .vscode/
 
 # Project-specific ignores
-hkopenai.document_as_code_mcp_server.egg-info/
+hkopenai.diagram_as_code_mcp_server.egg-info/

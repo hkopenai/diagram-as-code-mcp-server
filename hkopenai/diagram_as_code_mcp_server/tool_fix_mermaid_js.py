@@ -1,5 +1,5 @@
 import re
-from hkopenai.document_as_code_mcp_server.prompt_get_mermaid_js import get_mermaid_js
+from hkopenai.diagram_as_code_mcp_server.prompt_get_mermaid_js import get_mermaid_js
 
 def fix_mermaid_js(code: str | None) -> str:
     """
