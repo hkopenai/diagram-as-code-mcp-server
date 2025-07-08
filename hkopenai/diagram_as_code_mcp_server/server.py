@@ -31,13 +31,16 @@ def main():
                        help='Run in SSE mode instead of stdio')
     parser.add_argument('-t', '--tool', action='store_true',
                        help='Run in tool mode to serve prompt as a tool')
+    parser.add_argument(
+        "--host", type=str, default="127.0.0.1", help="Host to bind the server to"
+    )
     args = parser.parse_args()
 
     server = create_mcp_server(use_tool=args.tool)
     
     if args.sse:
-        server.run(transport="streamable-http")
-        print("MCP Server running in SSE mode on port 8000")
+        server.run(transport="streamable-http", host=args.host)
+        print(f"MCP Server started in SSE mode on port 8000, bound to {args.host}")
     else:
         server.run()
         print("MCP Server running in stdio mode")
