@@ -13,7 +13,7 @@ WORKDIR /app
 COPY --from=builder /root/.local /root/.local
 # Copy the application code
 COPY hkopenai/ ./hkopenai/
-COPY LICENSE .
+# COPY LICENSE .
 # COPY README.md .
 # Set PATH to include user-installed packages
 ENV PATH=/root/.local/bin:$PATH
