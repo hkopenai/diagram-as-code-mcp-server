@@ -14,7 +14,7 @@ COPY --from=builder /root/.local /root/.local
 # Copy the application code
 COPY hkopenai/ ./hkopenai/
 COPY LICENSE .
-COPY README.md .
+# COPY README.md .
 # Set PATH to include user-installed packages
 ENV PATH=/root/.local/bin:$PATH
 # Expose the port the app runs on
