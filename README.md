@@ -18,13 +18,13 @@ This MCP server is essential for MCP clients working with Mermaid.js diagrams. L
 
 1. Clone this repository
 2. Install Python dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+  ```bash
+  pip install -r requirements.txt
+  ```
 3. Run the server:
-   ```bash
-python -m hkopenai.diagram_as_code_mcp_server
-   ```
+  ```bash
+  python -m hkopenai.diagram_as_code_mcp_server
+  ```
 
 ### Running Options
 
