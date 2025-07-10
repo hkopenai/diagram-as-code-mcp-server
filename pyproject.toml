@@ -23,7 +23,7 @@ diagram_as_code_mcp_server = "hkopenai.diagram_as_code_mcp_server.app:main"
 
 [tool.setuptools]
 packages = [ "hkopenai.diagram_as_code_mcp_server",]
-include-package-data = false
+include-package-data = true
 
 [tool.bandit]
 exclude_dirs = [ "venv", ".venv", "tests",]
