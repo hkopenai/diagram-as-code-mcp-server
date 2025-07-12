@@ -21,15 +21,15 @@ def _fix_mermaid_js(code: str | None) -> str:
     Args:
         code: A string containing Mermaid.js code, or None.
     Returns:
-        A string with descriptions and node labels containing brackets wrapped in double quotes to fix syntax errors, 
-        prepended with "Fix: " if changes are made, or "No error detected" if no changes are needed, 
+        A string with descriptions and node labels containing brackets wrapped in double quotes to fix syntax errors,
+        prepended with "Fix: " if changes are made, or "No error detected" if no changes are needed,
         or "No code to review and fix." with instructions if input is empty or None.
     """
     if code is None or (code.strip() if code else "") == "":
         return f"No code to review and fix. {_get_mermaid_js()}"
     result = code
     changed = False
-    
+
     # Pattern to match text between pipe symbols (descriptions)
     pipe_pattern = r'\|([^|]*)\|'
     temp_result = ""
@@ -51,7 +51,7 @@ def _fix_mermaid_js(code: str | None) -> str:
     # Add the remaining part of the string after the last match
     temp_result += result[last_end:]
     result = temp_result
-    
+
     # Pattern to match text within square brackets for node labels (e.g., A[...])
     node_pattern = r'(\w+)\[([^\]]*)\]'
     temp_result = ""
@@ -73,7 +73,7 @@ def _fix_mermaid_js(code: str | None) -> str:
     # Add the remaining part of the string after the last match
     temp_result += result[last_end:]
     result = temp_result
-    
+
     if changed:
         return "Fix: " + result
     return "No error detected"

@@ -1,13 +1,17 @@
+"""Module for testing the MCP server creation and functionality."""
+
 import unittest
 from unittest.mock import patch, Mock
 from hkopenai.diagram_as_code_mcp_server.server import create_mcp_server
 
 
 class TestApp(unittest.TestCase):
+    """Test class for verifying MCP server creation and tool functionality."""
     @patch("hkopenai.diagram_as_code_mcp_server.server.FastMCP")
     @patch("hkopenai.diagram_as_code_mcp_server.prompt_get_mermaid_js.register")
     @patch("hkopenai.diagram_as_code_mcp_server.tool_fix_mermaid_js.register")
     def test_create_mcp_server(self, mock_tool_register, mock_prompt_register, mock_fastmcp):
+        """Test the creation of the MCP server and tool registration."""
         # Setup mocks
         mock_server = Mock()
         mock_fastmcp.return_value = mock_server

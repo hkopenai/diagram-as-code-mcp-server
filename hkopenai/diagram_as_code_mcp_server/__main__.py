@@ -1,6 +1,13 @@
-from hkopenai.diagram_as_code_mcp_server.server import main
+"""
+Main entry point for the Diagram as Code MCP Server.
+
+This module handles command-line arguments and initiates the main server functionality.
+"""
+
 import argparse
 import os
+
+from hkopenai.diagram_as_code_mcp_server.server import main
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Diagram as Code MCP Server")
@@ -12,7 +19,7 @@ if __name__ == "__main__":
         "--port",
         type=int,
         default=8000,
-        help="Port to run the server on (default: 8000)",
+        help="Port to run the server on (default: 8000)"
     )
     parser.add_argument(
         "--host", type=str, default="127.0.0.1", help="Host to bind the server to"

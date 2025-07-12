@@ -1,9 +1,9 @@
-import argparse
+"""Module for creating and running the Diagram as Code MCP Server."""
 from fastmcp import FastMCP
 import hkopenai.diagram_as_code_mcp_server.prompt_get_mermaid_js
 import hkopenai.diagram_as_code_mcp_server.tool_fix_mermaid_js
 
-def create_mcp_server(use_tool=False):
+def create_mcp_server():
     """Create and configure the Diagram as code MCP server"""
     mcp = FastMCP(name="DocAsCodeServer")
 
@@ -13,8 +13,14 @@ def create_mcp_server(use_tool=False):
     return mcp
 
 def main(args):
-    server = create_mcp_server(use_tool=args.tool)
-    
+    """
+    Main function to run the MCP Server.
+
+    Args:
+        args: Command line arguments passed to the function.
+    """
+    server = create_mcp_server()
+
     if args.sse:
         server.run(transport="streamable-http", host=args.host, port=args.port)
         print(f"MCP Server started in SSE mode on port {args.port}, bound to {args.host}")
