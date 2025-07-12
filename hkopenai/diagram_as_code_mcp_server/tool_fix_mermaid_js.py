@@ -1,7 +1,21 @@
+"""Module for fixing Mermaid.js syntax errors."""
 import re
-from hkopenai.diagram_as_code_mcp_server.prompt_get_mermaid_js import get_mermaid_js
+from typing import Annotated, Optional
+from pydantic import Field
+from fastmcp import FastMCP
+from hkopenai.diagram_as_code_mcp_server.prompt_get_mermaid_js import _get_mermaid_js
 
-def fix_mermaid_js(code: str | None) -> str:
+def register(mcp: FastMCP):
+    """Registers the fix_mermaid_js tool with the FastMCP server."""
+    @mcp.tool(
+        description="A tool to provide instructions on authoring, validating or fixing syntax in mermaid.js",
+    )
+    def fix_mermaid_js_tool(
+        code: Annotated[Optional[str], Field(description="mermaid js code block")]
+    ) -> str:
+        return _fix_mermaid_js(code)
+
+def _fix_mermaid_js(code: str | None) -> str:
     """
     Detects brackets in descriptions between pipe symbols and in node labels in Mermaid.js code and suggests quoting them.
     Args:
@@ -12,7 +26,7 @@ def fix_mermaid_js(code: str | None) -> str:
         or "No code to review and fix." with instructions if input is empty or None.
     """
     if code is None or (code.strip() if code else "") == "":
-        return f"No code to review and fix. {get_mermaid_js()}"
+        return f"No code to review and fix. {_get_mermaid_js()}"
     result = code
     changed = False
     
