@@ -12,18 +12,20 @@ def create_mcp_server():
 
     return mcp
 
-def main(host: str, port: int, sse: bool):
+def main(host: str = "0.0.0.0", port: int = 5000, sse: bool = False):
     """
     Main function to run the MCP Server.
 
     Args:
-        args: Command line arguments passed to the function.
+        host: The host address to bind the server to.
+        port: The port to listen on.
+        sse: Whether to run the server in SSE (Server-Sent Events) mode.
     """
     server = create_mcp_server()
 
     if sse:
         server.run(transport="streamable-http", host=host, port=port)
-        print(f"MCP Server started in SSE mode on port {args.port}, bound to {args.host}")
+        print(f"MCP Server started in SSE mode on port {port}, bound to {host}")
     else:
         server.run()
         print("MCP Server running in stdio mode")

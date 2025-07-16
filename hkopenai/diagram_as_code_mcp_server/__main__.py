@@ -7,7 +7,7 @@ This module handles command-line arguments and initiates the main server functio
 
 
 from hkopenai_common.cli_utils import cli_main
-from .server import server
+from .server import main
 
 if __name__ == "__main__":
-    cli_main(server, "Diagram as Code MCP Server")
+    cli_main(main, "Diagram as Code MCP Server")
