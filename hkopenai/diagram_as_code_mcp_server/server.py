@@ -1,7 +1,9 @@
 """Module for creating and running the Diagram as Code MCP Server."""
+
 from fastmcp import FastMCP
 import hkopenai.diagram_as_code_mcp_server.prompt_get_mermaid_js
 import hkopenai.diagram_as_code_mcp_server.tool_fix_mermaid_js
+
 
 def create_mcp_server():
     """Create and configure the Diagram as code MCP server"""
@@ -11,6 +13,7 @@ def create_mcp_server():
     hkopenai.diagram_as_code_mcp_server.tool_fix_mermaid_js.register(mcp)
 
     return mcp
+
 
 def main(host: str = "0.0.0.0", port: int = 5000, sse: bool = False):
     """
@@ -29,6 +32,7 @@ def main(host: str = "0.0.0.0", port: int = 5000, sse: bool = False):
     else:
         server.run()
         print("MCP Server running in stdio mode")
+
 
 if __name__ == "__main__":
     main()

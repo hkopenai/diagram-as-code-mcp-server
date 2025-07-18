@@ -3,7 +3,10 @@
 import unittest
 from unittest.mock import MagicMock, patch
 
-from hkopenai.diagram_as_code_mcp_server.tool_fix_mermaid_js import _fix_mermaid_js, register
+from hkopenai.diagram_as_code_mcp_server.tool_fix_mermaid_js import (
+    _fix_mermaid_js,
+    register,
+)
 from hkopenai.diagram_as_code_mcp_server.prompt_get_mermaid_js import _get_mermaid_js
 
 
@@ -13,7 +16,9 @@ class TestFixMermaidJs(unittest.TestCase):
     def test_fix_mermaid_js_with_brackets(self):
         """Test fixing descriptions with parentheses."""
         input_code = "SaaS -->|10 - Apply Retention Policy (7 days)| SaaS"
-        expected_output = """Fix: SaaS -->|"10 - Apply Retention Policy (7 days)"| SaaS"""
+        expected_output = (
+            """Fix: SaaS -->|"10 - Apply Retention Policy (7 days)"| SaaS"""
+        )
         result = _fix_mermaid_js(input_code)
         self.assertEqual(result, expected_output)
 
@@ -56,7 +61,7 @@ class TestFixMermaidJs(unittest.TestCase):
     def test_fix_mermaid_js_node_labels_quoting(self):
         """Test fixing node labels with special characters."""
         input_code = "A[AI Agent 1<br/>(e.g., Chatbot)] ---|Collaborate| B[AI Agent 2<br/>(e.g., Flight Booking)]"
-        expected_output = "Fix: A[\"AI Agent 1<br/>(e.g., Chatbot)\"] ---|Collaborate| B[\"AI Agent 2<br/>(e.g., Flight Booking)\"]"
+        expected_output = 'Fix: A["AI Agent 1<br/>(e.g., Chatbot)"] ---|Collaborate| B["AI Agent 2<br/>(e.g., Flight Booking)"]'
         result = _fix_mermaid_js(input_code)
         self.assertEqual(result, expected_output)
 
@@ -69,10 +74,12 @@ class TestFixMermaidJs(unittest.TestCase):
         )
         decorated_function = mock_mcp.tool.return_value.call_args[0][0]
         self.assertEqual(decorated_function.__name__, "fix_mermaid_js_tool")
-        with patch("hkopenai.diagram_as_code_mcp_server.tool_fix_mermaid_js._fix_mermaid_js") as mock_fix_mermaid_js:
+        with patch(
+            "hkopenai.diagram_as_code_mcp_server.tool_fix_mermaid_js._fix_mermaid_js"
+        ) as mock_fix_mermaid_js:
             decorated_function(code="test code")
             mock_fix_mermaid_js.assert_called_once_with("test code")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

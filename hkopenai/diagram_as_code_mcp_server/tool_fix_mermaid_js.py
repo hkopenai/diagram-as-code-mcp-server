@@ -1,19 +1,23 @@
 """Module for fixing Mermaid.js syntax errors."""
+
 import re
 from typing import Annotated, Optional
 from pydantic import Field
 from fastmcp import FastMCP
 from hkopenai.diagram_as_code_mcp_server.prompt_get_mermaid_js import _get_mermaid_js
 
+
 def register(mcp: FastMCP):
     """Registers the fix_mermaid_js tool with the FastMCP server."""
+
     @mcp.tool(
         description="A tool to provide instructions on authoring, validating or fixing syntax in mermaid.js",
     )
     def fix_mermaid_js_tool(
-        code: Annotated[Optional[str], Field(description="mermaid js code block")]
+        code: Annotated[Optional[str], Field(description="mermaid js code block")],
     ) -> str:
         return _fix_mermaid_js(code)
+
 
 def _fix_mermaid_js(code: str | None) -> str:
     """
@@ -31,29 +35,29 @@ def _fix_mermaid_js(code: str | None) -> str:
     changed = False
 
     # Pattern to match text between pipe symbols (descriptions)
-    pipe_pattern = r'\|([^|]*)\|'
+    pipe_pattern = r"\|([^|]*)\|"
     temp_result = ""
     last_end = 0
     for match in re.finditer(pipe_pattern, result):
         start, end = match.span()
         description = match.group(1)
         # Add the part of the string before the match
-        temp_result += result[last_end:start + 1]
-        if '(' in description or '[' in description:
+        temp_result += result[last_end : start + 1]
+        if "(" in description or "[" in description:
             # Suggest quoting the description
             suggestion = f'"{description}"'
             temp_result += suggestion
             changed = True
         else:
             temp_result += description
-        temp_result += result[end - 1:end]
+        temp_result += result[end - 1 : end]
         last_end = end
     # Add the remaining part of the string after the last match
     temp_result += result[last_end:]
     result = temp_result
 
     # Pattern to match text within square brackets for node labels (e.g., A[...])
-    node_pattern = r'(\w+)\[([^\]]*)\]'
+    node_pattern = r"(\w+)\[([^\]]*)\]"
     temp_result = ""
     last_end = 0
     for match in re.finditer(node_pattern, result):
@@ -62,7 +66,7 @@ def _fix_mermaid_js(code: str | None) -> str:
         label = match.group(2)
         # Add the part of the string before the match
         temp_result += result[last_end:start]
-        if '<br/>' in label or '(' in label or '[' in label:
+        if "<br/>" in label or "(" in label or "[" in label:
             # Suggest quoting the label
             suggestion = f'{node_name}["{label}"]'
             temp_result += suggestion
